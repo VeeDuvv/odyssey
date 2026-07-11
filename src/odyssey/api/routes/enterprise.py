@@ -50,6 +50,15 @@ class UpdateEnterpriseRequest(BaseModel):
     budget: BudgetEnvelope | None = None
 
 
+@router.get("")
+async def list_enterprises() -> dict:
+    """List all enterprise profiles."""
+    rows = await postgres_store.fetch(
+        "SELECT id, name, industry, created_at, updated_at FROM enterprises ORDER BY updated_at DESC"
+    )
+    return {"enterprises": [dict(r) for r in rows], "count": len(rows)}
+
+
 @router.post("")
 async def create_enterprise(request: CreateEnterpriseRequest) -> dict:
     """Create a new enterprise profile."""

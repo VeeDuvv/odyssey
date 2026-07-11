@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Sparkles, User, ChevronDown } from "lucide-react";
+import { Send, Sparkles, User, ChevronDown, Building2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { sendChat, type ChatResponse } from "@/lib/api";
+import { useEnterprise } from "@/lib/enterprise-context";
 import type { Message, Altitude } from "@/lib/types";
 
 const ALTITUDE_OPTIONS: { value: Altitude; label: string; desc: string }[] = [
@@ -30,6 +32,7 @@ export default function ChatPage() {
   const [showAltitude, setShowAltitude] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const { enterpriseId, enterpriseName, clearEnterprise } = useEnterprise();
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -49,7 +52,7 @@ export default function ChatPage() {
     setIsLoading(true);
 
     try {
-      const response: ChatResponse = await sendChat(input.trim(), undefined, altitude);
+      const response: ChatResponse = await sendChat(input.trim(), enterpriseId ?? undefined, altitude);
       const assistantMessage: Message = {
         id: crypto.randomUUID(),
         role: "assistant",
@@ -207,6 +210,30 @@ export default function ChatPage() {
       {/* Input area */}
       <div className="border-t border-white/[0.04] bg-[var(--color-bg)]/80 backdrop-blur-xl">
         <div className="max-w-3xl mx-auto px-8 py-4">
+          {/* Enterprise indicator */}
+          {enterpriseId ? (
+            <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/15">
+                <Building2 className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="text-xs text-emerald-400 font-medium">{enterpriseName}</span>
+                <button
+                  onClick={clearEnterprise}
+                  className="ml-1 text-emerald-400/50 hover:text-emerald-400 transition-colors"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </div>
+            </div>
+          ) : (
+            <Link
+              href="/enterprise"
+              className="flex items-center gap-1.5 mb-3 text-xs text-white/25 hover:text-white/40 transition-colors"
+            >
+              <Building2 className="w-3.5 h-3.5" />
+              Connect enterprise for personalized advice
+            </Link>
+          )}
+
           {/* Altitude selector */}
           <div className="flex items-center gap-2 mb-3">
             <span className="text-xs text-white/25 uppercase tracking-wider">Altitude</span>

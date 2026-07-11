@@ -27,3 +27,11 @@ export interface DomainCoverage {
   count: number;
   percentage: number;
 }
+
+export interface EnterpriseListItem {
+  id: string;
+  name: string;
+  industry: string;
+  created_at: string;
+  updated_at: string;
+}

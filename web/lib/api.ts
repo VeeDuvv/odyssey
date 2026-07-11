@@ -64,8 +64,14 @@ export async function getGraphStats() {
 
 // --- Enterprise ---
 
+export async function listEnterprises() {
+  return request<{ enterprises: import("./types").EnterpriseListItem[]; count: number }>(
+    "/enterprise"
+  );
+}
+
 export async function createEnterprise(data: Record<string, unknown>) {
-  return request<Record<string, unknown>>("/enterprise", {
+  return request<{ id: string; name: string; status: string }>("/enterprise", {
     method: "POST",
     body: JSON.stringify(data),
   });
@@ -73,6 +79,13 @@ export async function createEnterprise(data: Record<string, unknown>) {
 
 export async function getEnterprise(id: string) {
   return request<Record<string, unknown>>(`/enterprise/${id}`);
+}
+
+export async function updateEnterprise(id: string, data: Record<string, unknown>) {
+  return request<Record<string, unknown>>(`/enterprise/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(data),
+  });
 }
 
 export async function getEnterpriseAlerts(id: string) {
