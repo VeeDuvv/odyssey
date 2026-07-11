@@ -1,0 +1,520 @@
+{
+  "technologies": [
+    {
+      "id": "pinecone",
+      "name": "Pinecone",
+      "category": "vector_database",
+      "domain": "ai_patterns",
+      "vendor": "Pinecone",
+      "license": "proprietary",
+      "status": "growing",
+      "description": "Fully managed vector database purpose-built for similarity search. Offers serverless and pod-based architectures."
+    },
+    {
+      "id": "pgvector",
+      "name": "pgvector",
+      "category": "vector_database",
+      "domain": "ai_patterns",
+      "vendor": "Open Source",
+      "license": "open_source",
+      "status": "growing",
+      "description": "PostgreSQL extension for vector similarity search. Supports HNSW and IVFFlat indexing. Ideal for teams already using PostgreSQL."
+    },
+    {
+      "id": "weaviate",
+      "name": "Weaviate",
+      "category": "vector_database",
+      "domain": "ai_patterns",
+      "vendor": "Weaviate",
+      "license": "open_source",
+      "status": "growing",
+      "description": "Open-source vector database with built-in vectorization modules, hybrid search, and multi-tenancy support."
+    },
+    {
+      "id": "qdrant",
+      "name": "Qdrant",
+      "category": "vector_database",
+      "domain": "ai_patterns",
+      "vendor": "Qdrant",
+      "license": "open_source",
+      "status": "growing",
+      "description": "High-performance vector similarity search engine with filtering, payload storage, and Rust-based performance."
+    },
+    {
+      "id": "milvus",
+      "name": "Milvus",
+      "category": "vector_database",
+      "domain": "ai_patterns",
+      "vendor": "Zilliz",
+      "license": "open_source",
+      "status": "growing",
+      "description": "Cloud-native vector database built for scalable similarity search. Supports billion-scale vectors with GPU acceleration."
+    },
+    {
+      "id": "chroma",
+      "name": "Chroma",
+      "category": "vector_database",
+      "domain": "ai_patterns",
+      "vendor": "Chroma",
+      "license": "open_source",
+      "status": "growing",
+      "description": "Developer-focused embedding database. Simple API, great for prototyping and small-scale RAG applications."
+    },
+    {
+      "id": "snowflake",
+      "name": "Snowflake",
+      "category": "data_warehouse",
+      "domain": "data_platforms",
+      "vendor": "Snowflake",
+      "license": "proprietary",
+      "status": "mature",
+      "description": "Cloud data platform with separated compute and storage, supporting structured and semi-structured data at scale."
+    },
+    {
+      "id": "databricks",
+      "name": "Databricks",
+      "category": "lakehouse",
+      "domain": "data_platforms",
+      "vendor": "Databricks",
+      "license": "proprietary",
+      "status": "growing",
+      "description": "Unified analytics and AI platform built on Apache Spark. Combines data lake and data warehouse via Delta Lake."
+    },
+    {
+      "id": "bigquery",
+      "name": "BigQuery",
+      "category": "data_warehouse",
+      "domain": "data_platforms",
+      "vendor": "Google Cloud",
+      "license": "proprietary",
+      "status": "mature",
+      "description": "Google's serverless, multi-cloud data warehouse. Supports ML directly in SQL via BigQuery ML."
+    },
+    {
+      "id": "apache-kafka",
+      "name": "Apache Kafka",
+      "category": "streaming_platform",
+      "domain": "data_platforms",
+      "vendor": "Apache/Confluent",
+      "license": "open_source",
+      "status": "mature",
+      "description": "Distributed event streaming platform for high-throughput, low-latency data pipelines and streaming applications."
+    },
+    {
+      "id": "apache-flink",
+      "name": "Apache Flink",
+      "category": "streaming_platform",
+      "domain": "data_platforms",
+      "vendor": "Apache",
+      "license": "open_source",
+      "status": "growing",
+      "description": "Stream and batch processing framework with exactly-once semantics, event time processing, and stateful computations."
+    },
+    {
+      "id": "apache-spark",
+      "name": "Apache Spark",
+      "category": "compute_engine",
+      "domain": "data_platforms",
+      "vendor": "Apache/Databricks",
+      "license": "open_source",
+      "status": "mature",
+      "description": "Unified analytics engine for large-scale data processing. Supports SQL, streaming, ML, and graph processing."
+    },
+    {
+      "id": "apache-airflow",
+      "name": "Apache Airflow",
+      "category": "orchestrator",
+      "domain": "data_platforms",
+      "vendor": "Apache",
+      "license": "open_source",
+      "status": "mature",
+      "description": "Workflow orchestration platform for programmatically authoring, scheduling, and monitoring data pipelines."
+    },
+    {
+      "id": "dagster",
+      "name": "Dagster",
+      "category": "orchestrator",
+      "domain": "data_platforms",
+      "vendor": "Dagster Labs",
+      "license": "open_source",
+      "status": "growing",
+      "description": "Data orchestrator with software-defined assets, built-in testing, and observability. Modern alternative to Airflow."
+    },
+    {
+      "id": "dbt",
+      "name": "dbt",
+      "category": "data_transformation",
+      "domain": "data_platforms",
+      "vendor": "dbt Labs",
+      "license": "open_source",
+      "status": "mature",
+      "description": "SQL-based transformation tool that enables analytics engineers to transform data in the warehouse using software engineering practices."
+    },
+    {
+      "id": "mlflow",
+      "name": "MLflow",
+      "category": "experiment_tracker",
+      "domain": "ml_infrastructure",
+      "vendor": "Databricks",
+      "license": "open_source",
+      "status": "mature",
+      "description": "Open-source platform for ML lifecycle management including experiment tracking, model registry, and deployment."
+    },
+    {
+      "id": "weights-and-biases",
+      "name": "Weights & Biases",
+      "category": "experiment_tracker",
+      "domain": "ml_infrastructure",
+      "vendor": "Weights & Biases",
+      "license": "freemium",
+      "status": "growing",
+      "description": "ML experiment tracking, dataset versioning, and model management platform with rich visualization."
+    },
+    {
+      "id": "feast",
+      "name": "Feast",
+      "category": "feature_store",
+      "domain": "ml_infrastructure",
+      "vendor": "Tecton/Open Source",
+      "license": "open_source",
+      "status": "growing",
+      "description": "Open-source feature store for ML serving and training. Provides consistent feature access across offline and online stores."
+    },
+    {
+      "id": "sagemaker",
+      "name": "Amazon SageMaker",
+      "category": "training_platform",
+      "domain": "ml_infrastructure",
+      "vendor": "AWS",
+      "license": "proprietary",
+      "status": "mature",
+      "description": "AWS managed service for building, training, and deploying ML models. Includes notebooks, training jobs, and endpoints."
+    },
+    {
+      "id": "vertex-ai",
+      "name": "Vertex AI",
+      "category": "training_platform",
+      "domain": "ml_infrastructure",
+      "vendor": "Google Cloud",
+      "license": "proprietary",
+      "status": "growing",
+      "description": "Google Cloud's unified ML platform for building, deploying, and scaling AI models including generative AI."
+    },
+    {
+      "id": "vllm",
+      "name": "vLLM",
+      "category": "serving_platform",
+      "domain": "ml_infrastructure",
+      "vendor": "Open Source",
+      "license": "open_source",
+      "status": "growing",
+      "description": "High-throughput LLM serving engine with PagedAttention for efficient memory management. Optimized for production inference."
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "category": "foundation_model",
+      "domain": "ai_models",
+      "vendor": "Anthropic",
+      "license": "proprietary",
+      "status": "growing",
+      "description": "Anthropic's frontier AI model family. Known for safety, long context, and strong reasoning. Available via API and cloud platforms."
+    },
+    {
+      "id": "gpt-4",
+      "name": "GPT-4",
+      "category": "foundation_model",
+      "domain": "ai_models",
+      "vendor": "OpenAI",
+      "license": "proprietary",
+      "status": "mature",
+      "description": "OpenAI's multimodal large language model. Widely adopted for text generation, analysis, and code. Available via API and Azure."
+    },
+    {
+      "id": "llama",
+      "name": "Llama",
+      "category": "foundation_model",
+      "domain": "ai_models",
+      "vendor": "Meta",
+      "license": "open_source",
+      "status": "growing",
+      "description": "Meta's open-weight LLM family. Strong performance at various sizes, enabling on-premise and custom deployment."
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "category": "foundation_model",
+      "domain": "ai_models",
+      "vendor": "Google",
+      "license": "proprietary",
+      "status": "growing",
+      "description": "Google's multimodal AI model family with native multi-modal understanding and long context windows."
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral",
+      "category": "foundation_model",
+      "domain": "ai_models",
+      "vendor": "Mistral AI",
+      "license": "open_source",
+      "status": "growing",
+      "description": "European AI lab's efficient open-weight models. Known for strong performance-to-size ratio and mixture-of-experts architecture."
+    },
+    {
+      "id": "langchain",
+      "name": "LangChain",
+      "category": "agent_framework",
+      "domain": "ai_patterns",
+      "vendor": "LangChain",
+      "license": "open_source",
+      "status": "mature",
+      "description": "Framework for building applications powered by LLMs. Provides chains, agents, memory, and retrieval components."
+    },
+    {
+      "id": "llamaindex",
+      "name": "LlamaIndex",
+      "category": "agent_framework",
+      "domain": "ai_patterns",
+      "vendor": "LlamaIndex",
+      "license": "open_source",
+      "status": "growing",
+      "description": "Data framework for LLM applications focused on ingestion, indexing, and querying of private data. Strong RAG capabilities."
+    },
+    {
+      "id": "amazon-bedrock",
+      "name": "Amazon Bedrock",
+      "category": "model_gateway",
+      "domain": "ai_models",
+      "vendor": "AWS",
+      "license": "proprietary",
+      "status": "growing",
+      "description": "AWS managed service providing access to foundation models from multiple providers. Supports fine-tuning and RAG."
+    },
+    {
+      "id": "collibra",
+      "name": "Collibra",
+      "category": "governance_platform",
+      "domain": "data_governance",
+      "vendor": "Collibra",
+      "license": "proprietary",
+      "status": "mature",
+      "description": "Enterprise data governance and catalog platform. Provides data quality, lineage, and compliance management."
+    },
+    {
+      "id": "datahub",
+      "name": "DataHub",
+      "category": "catalog_tool",
+      "domain": "data_governance",
+      "vendor": "Acryl Data",
+      "license": "open_source",
+      "status": "growing",
+      "description": "Open-source metadata platform for data discovery, observability, and governance. Extensible via plugins."
+    },
+    {
+      "id": "great-expectations",
+      "name": "Great Expectations",
+      "category": "data_quality_tool",
+      "domain": "data_governance",
+      "vendor": "Great Expectations",
+      "license": "open_source",
+      "status": "mature",
+      "description": "Data quality testing framework. Define expectations for data and validate them in pipelines."
+    },
+    {
+      "id": "aws",
+      "name": "Amazon Web Services",
+      "category": "cloud_provider",
+      "domain": "cloud_deployment",
+      "vendor": "Amazon",
+      "license": "proprietary",
+      "status": "mature",
+      "description": "Leading cloud platform with the broadest service portfolio. Dominant in enterprise cloud infrastructure."
+    },
+    {
+      "id": "gcp",
+      "name": "Google Cloud Platform",
+      "category": "cloud_provider",
+      "domain": "cloud_deployment",
+      "vendor": "Google",
+      "license": "proprietary",
+      "status": "mature",
+      "description": "Google's cloud platform, strong in data analytics, AI/ML, and Kubernetes. BigQuery and Vertex AI are differentiators."
+    },
+    {
+      "id": "azure",
+      "name": "Microsoft Azure",
+      "category": "cloud_provider",
+      "domain": "cloud_deployment",
+      "vendor": "Microsoft",
+      "license": "proprietary",
+      "status": "mature",
+      "description": "Microsoft's cloud platform with strong enterprise integration. Azure OpenAI Service is a key AI differentiator."
+    }
+  ],
+  "capabilities": [
+    {"id": "vector-similarity-search", "name": "Vector Similarity Search", "domain": "ai_patterns", "description": "Search for semantically similar items using vector embeddings."},
+    {"id": "real-time-feature-serving", "name": "Real-time Feature Serving", "domain": "ml_infrastructure", "description": "Serve ML features with low latency for online inference."},
+    {"id": "experiment-tracking", "name": "Experiment Tracking", "domain": "ml_infrastructure", "description": "Track ML experiments including parameters, metrics, and artifacts."},
+    {"id": "stream-processing", "name": "Stream Processing", "domain": "data_platforms", "description": "Process continuous data streams in real time."},
+    {"id": "batch-processing", "name": "Batch Processing", "domain": "data_platforms", "description": "Process large volumes of data in scheduled batches."},
+    {"id": "data-warehousing", "name": "Data Warehousing", "domain": "data_platforms", "description": "Store and analyze structured data at scale with SQL interfaces."},
+    {"id": "workflow-orchestration", "name": "Workflow Orchestration", "domain": "data_platforms", "description": "Schedule, coordinate, and monitor complex data pipelines."},
+    {"id": "text-generation", "name": "Text Generation", "domain": "ai_models", "description": "Generate human-like text for various tasks including writing, analysis, and conversation."},
+    {"id": "code-generation", "name": "Code Generation", "domain": "ai_models", "description": "Generate, explain, and debug code across programming languages."},
+    {"id": "llm-serving", "name": "LLM Serving", "domain": "ml_infrastructure", "description": "Serve large language models with high throughput and low latency."},
+    {"id": "rag", "name": "Retrieval-Augmented Generation", "domain": "ai_patterns", "description": "Combine retrieval from a knowledge base with LLM generation for grounded responses."},
+    {"id": "data-quality-validation", "name": "Data Quality Validation", "domain": "data_governance", "description": "Validate data against defined expectations and quality rules."},
+    {"id": "metadata-management", "name": "Metadata Management", "domain": "data_governance", "description": "Catalog, discover, and govern metadata across the data estate."},
+    {"id": "model-training", "name": "Model Training", "domain": "ml_infrastructure", "description": "Train ML models at scale with managed compute resources."}
+  ],
+  "patterns": [
+    {"id": "rag-pattern", "name": "RAG (Retrieval-Augmented Generation)", "domain": "ai_patterns", "description": "Retrieve relevant context from a knowledge base and feed it to an LLM to generate grounded, accurate responses.", "when_to_use": ["Need factual, up-to-date responses", "Working with private/proprietary data", "Want to reduce hallucinations"], "when_not_to_use": ["Simple creative generation tasks", "Data is already in the model's training set", "Real-time latency is critical and retrieval adds too much overhead"]},
+    {"id": "agentic-pattern", "name": "Agentic AI", "domain": "ai_patterns", "description": "LLM-powered agents that can plan, use tools, and take actions autonomously to accomplish complex tasks.", "when_to_use": ["Multi-step tasks requiring tool use", "Tasks needing dynamic decision-making", "Complex workflows with branching logic"], "when_not_to_use": ["Simple single-turn Q&A", "Tasks requiring deterministic outcomes", "When latency/cost must be minimal"]},
+    {"id": "feature-store-pattern", "name": "Feature Store", "domain": "ml_infrastructure", "description": "Centralized repository for storing, managing, and serving ML features consistently across training and inference.", "when_to_use": ["Multiple models share features", "Need consistent features between training and serving", "Feature computation is expensive"], "when_not_to_use": ["Single model with simple features", "Features are computed on-the-fly cheaply", "Early prototyping stage"]},
+    {"id": "lakehouse-pattern", "name": "Lakehouse Architecture", "domain": "data_platforms", "description": "Combines data lake flexibility with data warehouse performance. ACID transactions on object storage with SQL query capabilities.", "when_to_use": ["Need both structured analytics and unstructured data", "Want to avoid maintaining separate lake and warehouse", "Cost-sensitive at scale"], "when_not_to_use": ["Simple analytics on structured data only", "Small data volumes where a warehouse suffices", "Team lacks data engineering expertise"]},
+    {"id": "data-mesh-pattern", "name": "Data Mesh", "domain": "data_platforms", "description": "Decentralized data architecture where domain teams own and serve their data as products.", "when_to_use": ["Large organization with many domains", "Centralized data team is a bottleneck", "Domains have distinct data ownership"], "when_not_to_use": ["Small organization", "Data is naturally centralized", "Lack of domain engineering maturity"]}
+  ],
+  "relationships": [
+    {"source": "pinecone", "target": "vector-similarity-search", "type": "IMPLEMENTS"},
+    {"source": "pgvector", "target": "vector-similarity-search", "type": "IMPLEMENTS"},
+    {"source": "weaviate", "target": "vector-similarity-search", "type": "IMPLEMENTS"},
+    {"source": "qdrant", "target": "vector-similarity-search", "type": "IMPLEMENTS"},
+    {"source": "milvus", "target": "vector-similarity-search", "type": "IMPLEMENTS"},
+    {"source": "chroma", "target": "vector-similarity-search", "type": "IMPLEMENTS"},
+
+    {"source": "pinecone", "target": "pgvector", "type": "COMPETES_WITH"},
+    {"source": "pinecone", "target": "weaviate", "type": "COMPETES_WITH"},
+    {"source": "pinecone", "target": "qdrant", "type": "COMPETES_WITH"},
+    {"source": "pinecone", "target": "milvus", "type": "COMPETES_WITH"},
+    {"source": "weaviate", "target": "qdrant", "type": "COMPETES_WITH"},
+
+    {"source": "pinecone", "target": "aws", "type": "HOSTED_ON", "properties": {"service": "Pinecone Serverless"}},
+    {"source": "pgvector", "target": "aws", "type": "HOSTED_ON", "properties": {"service": "RDS/Aurora PostgreSQL"}},
+    {"source": "pinecone", "target": "gcp", "type": "HOSTED_ON", "properties": {"service": "Pinecone Serverless"}},
+    {"source": "pgvector", "target": "gcp", "type": "HOSTED_ON", "properties": {"service": "Cloud SQL PostgreSQL"}},
+    {"source": "pgvector", "target": "azure", "type": "HOSTED_ON", "properties": {"service": "Azure Database for PostgreSQL"}},
+
+    {"source": "snowflake", "target": "data-warehousing", "type": "IMPLEMENTS"},
+    {"source": "bigquery", "target": "data-warehousing", "type": "IMPLEMENTS"},
+    {"source": "databricks", "target": "data-warehousing", "type": "IMPLEMENTS"},
+    {"source": "snowflake", "target": "databricks", "type": "COMPETES_WITH"},
+    {"source": "snowflake", "target": "bigquery", "type": "COMPETES_WITH"},
+
+    {"source": "apache-kafka", "target": "stream-processing", "type": "IMPLEMENTS"},
+    {"source": "apache-flink", "target": "stream-processing", "type": "IMPLEMENTS"},
+    {"source": "apache-flink", "target": "apache-kafka", "type": "INTEGRATES_WITH"},
+    {"source": "apache-spark", "target": "batch-processing", "type": "IMPLEMENTS"},
+    {"source": "apache-spark", "target": "stream-processing", "type": "IMPLEMENTS"},
+
+    {"source": "apache-airflow", "target": "workflow-orchestration", "type": "IMPLEMENTS"},
+    {"source": "dagster", "target": "workflow-orchestration", "type": "IMPLEMENTS"},
+    {"source": "dagster", "target": "apache-airflow", "type": "COMPETES_WITH"},
+
+    {"source": "mlflow", "target": "experiment-tracking", "type": "IMPLEMENTS"},
+    {"source": "weights-and-biases", "target": "experiment-tracking", "type": "IMPLEMENTS"},
+    {"source": "mlflow", "target": "weights-and-biases", "type": "COMPETES_WITH"},
+    {"source": "feast", "target": "real-time-feature-serving", "type": "IMPLEMENTS"},
+
+    {"source": "sagemaker", "target": "model-training", "type": "IMPLEMENTS"},
+    {"source": "vertex-ai", "target": "model-training", "type": "IMPLEMENTS"},
+    {"source": "sagemaker", "target": "aws", "type": "HOSTED_ON"},
+    {"source": "vertex-ai", "target": "gcp", "type": "HOSTED_ON"},
+    {"source": "sagemaker", "target": "vertex-ai", "type": "COMPETES_WITH"},
+
+    {"source": "vllm", "target": "llm-serving", "type": "IMPLEMENTS"},
+
+    {"source": "claude", "target": "text-generation", "type": "IMPLEMENTS"},
+    {"source": "claude", "target": "code-generation", "type": "IMPLEMENTS"},
+    {"source": "gpt-4", "target": "text-generation", "type": "IMPLEMENTS"},
+    {"source": "gpt-4", "target": "code-generation", "type": "IMPLEMENTS"},
+    {"source": "llama", "target": "text-generation", "type": "IMPLEMENTS"},
+    {"source": "gemini", "target": "text-generation", "type": "IMPLEMENTS"},
+    {"source": "mistral", "target": "text-generation", "type": "IMPLEMENTS"},
+    {"source": "claude", "target": "gpt-4", "type": "COMPETES_WITH"},
+    {"source": "claude", "target": "gemini", "type": "COMPETES_WITH"},
+    {"source": "llama", "target": "mistral", "type": "COMPETES_WITH"},
+
+    {"source": "amazon-bedrock", "target": "aws", "type": "HOSTED_ON"},
+    {"source": "amazon-bedrock", "target": "claude", "type": "INTEGRATES_WITH"},
+    {"source": "amazon-bedrock", "target": "llama", "type": "INTEGRATES_WITH"},
+
+    {"source": "langchain", "target": "llamaindex", "type": "COMPETES_WITH"},
+
+    {"source": "vector-similarity-search", "target": "rag-pattern", "type": "ENABLES", "properties": {"importance": "required"}},
+    {"source": "text-generation", "target": "rag-pattern", "type": "ENABLES", "properties": {"importance": "required"}},
+    {"source": "text-generation", "target": "agentic-pattern", "type": "ENABLES", "properties": {"importance": "required"}},
+    {"source": "real-time-feature-serving", "target": "feature-store-pattern", "type": "ENABLES", "properties": {"importance": "required"}},
+
+    {"source": "collibra", "target": "metadata-management", "type": "IMPLEMENTS"},
+    {"source": "datahub", "target": "metadata-management", "type": "IMPLEMENTS"},
+    {"source": "great-expectations", "target": "data-quality-validation", "type": "IMPLEMENTS"},
+    {"source": "collibra", "target": "datahub", "type": "COMPETES_WITH"},
+    {"source": "dbt", "target": "snowflake", "type": "INTEGRATES_WITH"},
+    {"source": "dbt", "target": "bigquery", "type": "INTEGRATES_WITH"},
+    {"source": "dbt", "target": "databricks", "type": "INTEGRATES_WITH"}
+  ],
+  "decision_templates": [
+    {
+      "id": "dt-choose-vector-db",
+      "slug": "choose-vector-database",
+      "question": "Which vector database should we use for our similarity search / RAG needs?",
+      "domain": "ai_patterns",
+      "altitude": "tactical",
+      "option_ids": ["pinecone", "pgvector", "weaviate", "qdrant", "milvus", "chroma"],
+      "evaluation_criteria": ["scale", "latency", "cost", "operational_complexity", "cloud_compatibility", "team_expertise"],
+      "reversibility": "reversible_with_effort",
+      "decision_drivers": ["embedding_count", "latency_requirements", "team_size", "cloud_provider", "existing_stack"]
+    },
+    {
+      "id": "dt-choose-data-platform",
+      "slug": "choose-data-platform",
+      "question": "What should be our core data platform / warehouse?",
+      "domain": "data_platforms",
+      "altitude": "strategic",
+      "option_ids": ["snowflake", "databricks", "bigquery"],
+      "evaluation_criteria": ["scale", "cost", "ecosystem", "ml_capabilities", "governance", "team_skills"],
+      "reversibility": "practically_irreversible",
+      "decision_drivers": ["data_volume", "use_case_mix", "cloud_provider", "budget", "team_skills"]
+    },
+    {
+      "id": "dt-choose-orchestrator",
+      "slug": "choose-orchestrator",
+      "question": "Which workflow orchestrator should we use for our data pipelines?",
+      "domain": "data_platforms",
+      "altitude": "tactical",
+      "option_ids": ["apache-airflow", "dagster"],
+      "evaluation_criteria": ["ease_of_use", "testing", "observability", "community", "cloud_managed_options"],
+      "reversibility": "reversible_with_effort",
+      "decision_drivers": ["pipeline_complexity", "team_preference", "existing_tooling"]
+    },
+    {
+      "id": "dt-choose-foundation-model",
+      "slug": "choose-foundation-model",
+      "question": "Which foundation model should we use for our AI applications?",
+      "domain": "ai_models",
+      "altitude": "strategic",
+      "option_ids": ["claude", "gpt-4", "llama", "gemini", "mistral"],
+      "evaluation_criteria": ["capability", "cost", "latency", "context_window", "safety", "deployment_flexibility"],
+      "reversibility": "easily_reversible",
+      "decision_drivers": ["use_case", "data_sensitivity", "budget", "latency_requirements", "on_premise_requirements"]
+    },
+    {
+      "id": "dt-choose-experiment-tracker",
+      "slug": "choose-experiment-tracker",
+      "question": "Which experiment tracking tool should we use for our ML workflows?",
+      "domain": "ml_infrastructure",
+      "altitude": "tactical",
+      "option_ids": ["mlflow", "weights-and-biases"],
+      "evaluation_criteria": ["features", "cost", "integration", "self_hosted_option", "collaboration"],
+      "reversibility": "reversible_with_effort",
+      "decision_drivers": ["team_size", "budget", "self_hosted_requirement", "existing_ml_stack"]
+    }
+  ],
+  "source_feeds": [
+    {"url": "https://blog.langchain.dev/rss/", "domain": "ai_patterns"},
+    {"url": "https://www.anthropic.com/research/rss.xml", "domain": "ai_models"},
+    {"url": "https://openai.com/blog/rss.xml", "domain": "ai_models"},
+    {"url": "https://ai.googleblog.com/feeds/posts/default?alt=rss", "domain": "ai_models"},
+    {"url": "https://engineering.databricks.com/feed", "domain": "data_platforms"}
+  ]
+}
