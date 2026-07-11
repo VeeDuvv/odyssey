@@ -379,10 +379,14 @@ class ArchitectAgent(BaseAgent):
     # --- Helpers ---
 
     def _classify_query(self, query: str) -> str:
+        import re
         q = query.lower()
-        if any(w in q for w in ["compare", "vs", "versus", "difference between", "or"]):
+        # Use word boundaries to avoid false matches (e.g., "vector" matching "or")
+        comparison_patterns = [r"\bcompare\b", r"\bvs\.?\b", r"\bversus\b", r"\bdifference between\b", r"\bor\b"]
+        if any(re.search(p, q) for p in comparison_patterns):
             return "comparison"
-        if any(w in q for w in ["roadmap", "plan", "phases", "timeline", "sequence"]):
+        roadmap_patterns = [r"\broadmap\b", r"\bplan\b", r"\bphases\b", r"\btimeline\b", r"\bsequence\b"]
+        if any(re.search(p, q) for p in roadmap_patterns):
             return "roadmap"
         return "recommendation"
 

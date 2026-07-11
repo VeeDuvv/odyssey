@@ -26,8 +26,8 @@ class Settings(BaseSettings):
     api_key: str = "odyssey-dev-key"
 
     # LLM defaults
-    llm_model: str = "claude-sonnet-4-20250514"
-    llm_reasoning_model: str = "claude-opus-4-20250514"
+    llm_model: str = "claude-haiku-4-5-20251001"
+    llm_reasoning_model: str = "claude-haiku-4-5-20251001"
     llm_max_tokens: int = 4096
 
 
