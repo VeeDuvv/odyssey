@@ -229,9 +229,6 @@ class ArchitectAgent(BaseAgent):
 
     async def process(self, query: AgentQuery) -> AgentResponse:
         """Process an architecture query."""
-        # Determine query type
-        query_type = self._classify_query(query.query)
-
         # Gather contexts
         kg_context = await self._gather_kg_context(query.query)
         enterprise_context = ""
@@ -241,7 +238,17 @@ class ArchitectAgent(BaseAgent):
             if enterprise_profile:
                 enterprise_context = self._format_enterprise_context(enterprise_profile)
 
-        # Route to appropriate handler
+        # Check if LLM is available; if not, return knowledge graph data directly
+        if not llm_client.available:
+            return self._make_response(
+                content=f"Here's what the knowledge graph has for your query:\n\n{kg_context}\n\n"
+                "Note: Full AI-powered architecture analysis requires an ANTHROPIC_API_KEY in your .env file.",
+                confidence=0.4,
+                metadata={"query_type": "fallback", "llm_available": False},
+            )
+
+        # Determine query type and route to handler
+        query_type = self._classify_query(query.query)
         match query_type:
             case "comparison":
                 return await self._handle_comparison(query, kg_context, enterprise_context)

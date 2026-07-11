@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     neo4j_password: str = "odyssey_dev"
 
     # PostgreSQL
-    postgres_dsn: str = "postgresql://odyssey:odyssey_dev@localhost:5432/odyssey"
+    postgres_dsn: str = "postgresql://odyssey:odyssey_dev@localhost:5433/odyssey"
 
     # Redis
     redis_url: str = "redis://localhost:6379"

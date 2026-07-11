@@ -3,11 +3,19 @@
 from __future__ import annotations
 
 import json
+import logging
 from typing import Any
 
 import anthropic
 
 from odyssey.config import settings
+
+logger = logging.getLogger("odyssey.llm")
+
+
+class LLMUnavailableError(Exception):
+    """Raised when the LLM cannot be used (no API key, rate limit, etc.)."""
+    pass
 
 
 class LLMClient:
@@ -17,7 +25,16 @@ class LLMClient:
         self._client: anthropic.AsyncAnthropic | None = None
 
     @property
+    def available(self) -> bool:
+        """Check if LLM is configured and usable."""
+        return bool(settings.anthropic_api_key and settings.anthropic_api_key != "sk-ant-...")
+
+    @property
     def client(self) -> anthropic.AsyncAnthropic:
+        if not self.available:
+            raise LLMUnavailableError(
+                "No ANTHROPIC_API_KEY configured. Set it in your .env file."
+            )
         if self._client is None:
             self._client = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
         return self._client
@@ -31,6 +48,9 @@ class LLMClient:
         temperature: float = 0.7,
     ) -> str:
         """Generate a text response from Claude."""
+        if not self.available:
+            raise LLMUnavailableError("No ANTHROPIC_API_KEY configured.")
+
         messages = [{"role": "user", "content": prompt}]
         kwargs: dict[str, Any] = {
             "model": model or settings.llm_model,
@@ -52,10 +72,7 @@ class LLMClient:
         max_tokens: int | None = None,
         temperature: float = 0.3,
     ) -> dict[str, Any]:
-        """Generate a JSON-structured response from Claude.
-
-        The prompt should instruct Claude to respond in JSON format.
-        """
+        """Generate a JSON-structured response from Claude."""
         full_system = (system + "\n\n" if system else "") + (
             "You MUST respond with valid JSON only. No markdown, no explanation, just JSON."
         )
@@ -88,7 +105,7 @@ class LLMClient:
             system=system,
             model=settings.llm_reasoning_model,
             max_tokens=max_tokens or 8192,
-            temperature=1.0,  # Required for extended thinking models
+            temperature=1.0,
         )
 
 

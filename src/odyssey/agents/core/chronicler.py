@@ -115,15 +115,25 @@ class ChroniclerAgent(BaseAgent):
             for domain, count in sorted(query_trends.items(), key=lambda x: x[1], reverse=True):
                 context_parts.append(f"- {domain}: {count} queries")
 
-        response_text = await llm_client.generate(
-            prompt="\n".join(context_parts),
-            system=CHRONICLER_SYSTEM,
-            temperature=0.5,
-        )
+        try:
+            response_text = await llm_client.generate(
+                prompt="\n".join(context_parts),
+                system=CHRONICLER_SYSTEM,
+                temperature=0.5,
+            )
+        except Exception:
+            # Fallback: return raw temporal context
+            response_text = "\n".join(context_parts)
+            if not landscape_changes and not recent_insights:
+                response_text += "\n\nNo recent changes detected in the knowledge graph."
+            response_text += (
+                "\n\nNote: LLM-powered analysis is unavailable. "
+                "Set ANTHROPIC_API_KEY in your .env file for richer insights."
+            )
 
         return self._make_response(
             content=response_text,
-            confidence=0.7,
+            confidence=0.7 if llm_client.available else 0.4,
             structured_data={
                 "insights_count": len(recent_insights),
                 "evolution_entries": len(evolution_history),

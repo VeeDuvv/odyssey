@@ -39,7 +39,26 @@ async def chat(request: ChatRequest) -> ChatResponse:
         context=request.context,
     )
 
-    response = await agent_router.route(agent_query)
+    try:
+        response = await agent_router.route(agent_query)
+    except Exception as e:
+        # Never let the chat endpoint 500 — always return something useful
+        error_msg = str(e)
+        if "credit balance" in error_msg or "api_key" in error_msg.lower():
+            content = (
+                "Odyssey's AI engine is currently unavailable — your Anthropic API account "
+                "needs credits. Please visit console.anthropic.com to add credits.\n\n"
+                "In the meantime, you can explore the Knowledge Graph page to browse "
+                "technologies, or check the Cortex page to see the self-evolution engine."
+            )
+        else:
+            content = f"Something went wrong processing your query. Error: {error_msg}"
+        return ChatResponse(
+            content=content,
+            agent="System",
+            confidence=0.0,
+            metadata={"error": True},
+        )
 
     return ChatResponse(
         content=response.content,

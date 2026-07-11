@@ -69,16 +69,20 @@ class NavigatorAgent(BaseAgent):
         # 3. Build prompt with context
         prompt = self._build_prompt(query, kg_context, enterprise_context)
 
-        # 4. Generate response via LLM
-        response_text = await llm_client.generate(
-            prompt=prompt,
-            system=NAVIGATOR_SYSTEM,
-            temperature=0.5,
-        )
+        # 4. Generate response via LLM (with graceful fallback)
+        try:
+            response_text = await llm_client.generate(
+                prompt=prompt,
+                system=NAVIGATOR_SYSTEM,
+                temperature=0.5,
+            )
+        except Exception as e:
+            # Fallback: return knowledge graph context directly
+            response_text = self._format_kg_fallback(query.query, kg_context)
 
         return self._make_response(
             content=response_text,
-            confidence=0.7,
+            confidence=0.7 if kg_context else 0.3,
             metadata={"altitude": query.altitude, "kg_nodes_used": len(kg_context)},
         )
 
@@ -150,5 +154,40 @@ class NavigatorAgent(BaseAgent):
             "\nProvide a clear, actionable response. "
             "If comparing options, present a structured comparison. "
             "End with 2-3 follow-up questions that would help refine the recommendation."
+        )
+        return "\n".join(parts)
+
+    def _format_kg_fallback(self, query: str, kg_context: list[dict]) -> str:
+        """Format knowledge graph results directly when LLM is unavailable."""
+        if not kg_context:
+            return (
+                f"I found no matching technologies for \"{query}\" in the knowledge graph. "
+                "Try searching for specific technology names like Pinecone, Snowflake, or Kafka."
+            )
+
+        parts = [f"Here's what I found in the knowledge graph for \"{query}\":\n"]
+        for item in kg_context[:5]:
+            tech = item.get("technology", {})
+            name = tech.get("name", "Unknown")
+            desc = tech.get("description", "")
+            category = tech.get("category", "").replace("_", " ")
+            status = tech.get("status", "")
+
+            parts.append(f"**{name}** ({category}, {status})")
+            if desc:
+                parts.append(f"  {desc}")
+
+            rels = item.get("outgoing_relationships", [])
+            if rels:
+                rel_strs = []
+                for rel in rels[:4]:
+                    target = rel.get("target", {})
+                    rel_strs.append(f"{rel.get('type', '')}: {target.get('name', target.get('id', ''))}")
+                parts.append(f"  Relationships: {', '.join(rel_strs)}")
+            parts.append("")
+
+        parts.append(
+            "Note: LLM-powered analysis is unavailable (no ANTHROPIC_API_KEY configured). "
+            "Set it in your .env file for full AI-powered recommendations."
         )
         return "\n".join(parts)
