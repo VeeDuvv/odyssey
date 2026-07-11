@@ -13,6 +13,7 @@ import {
   Brain,
   Sparkles,
 } from "lucide-react";
+import { useEnterprise } from "@/lib/enterprise-context";
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: Compass },
@@ -26,6 +27,7 @@ const navigation = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const { enterpriseName } = useEnterprise();
 
   return (
     <aside className="fixed left-0 top-0 bottom-0 w-[72px] flex flex-col items-center py-6 z-50 glass-strong">
@@ -71,6 +73,18 @@ export function Sidebar() {
           );
         })}
       </nav>
+
+      {/* Enterprise indicator */}
+      {enterpriseName && (
+        <Link href="/enterprise" className="mb-3 group relative">
+          <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/15 flex items-center justify-center text-emerald-400 text-sm font-semibold transition-all group-hover:bg-emerald-500/25">
+            {enterpriseName.charAt(0).toUpperCase()}
+          </div>
+          <div className="absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-white/10 backdrop-blur-xl text-xs font-medium text-white whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200">
+            {enterpriseName}
+          </div>
+        </Link>
+      )}
 
       {/* Status dot */}
       <div className="relative">
