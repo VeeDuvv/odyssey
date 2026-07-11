@@ -13,7 +13,7 @@ from odyssey.agents.core.navigator import NavigatorAgent
 from odyssey.agents.core.sentinel import SentinelAgent
 from odyssey.agents.registry import agent_registry
 from odyssey.api.middleware.telemetry import TelemetryMiddleware
-from odyssey.api.routes import chat, enterprise, knowledge
+from odyssey.api.routes import admin, chat, enterprise, knowledge
 from odyssey.knowledge.ontology import initialize_ontology
 from odyssey.storage.neo4j import neo4j_store
 from odyssey.storage.postgres import postgres_store
@@ -77,6 +77,7 @@ app.add_middleware(TelemetryMiddleware)
 app.include_router(chat.router)
 app.include_router(knowledge.router)
 app.include_router(enterprise.router)
+app.include_router(admin.router)
 
 
 @app.get("/health")
