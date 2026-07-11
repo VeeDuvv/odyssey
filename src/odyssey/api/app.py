@@ -8,7 +8,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from odyssey.agents.bus import agent_bus
+from odyssey.agents.core.architect import ArchitectAgent
 from odyssey.agents.core.cartographer import CartographerAgent
+from odyssey.agents.core.chronicler import ChroniclerAgent
 from odyssey.agents.core.navigator import NavigatorAgent
 from odyssey.agents.core.sentinel import SentinelAgent
 from odyssey.agents.registry import agent_registry
@@ -39,13 +41,11 @@ async def lifespan(app: FastAPI):
     navigator = NavigatorAgent()
     cartographer = CartographerAgent()
     sentinel = SentinelAgent()
+    architect = ArchitectAgent()
+    chronicler = ChroniclerAgent()
 
-    agent_registry.register(navigator)
-    agent_registry.register(cartographer)
-    agent_registry.register(sentinel)
-
-    # Persist agent definitions
-    for agent in [navigator, cartographer, sentinel]:
+    for agent in [navigator, cartographer, sentinel, architect, chronicler]:
+        agent_registry.register(agent)
         await agent_registry.persist(agent)
 
     yield
